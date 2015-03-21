@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     // Metadata.
-    pkg: grunt.file.readJSON('{%= jqueryjson %}'),
+    pkg: grunt.file.readJSON('{%= coffeejson %}'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     coffee: {
 	compile: {
 	    files: {
-		'src/js/hello.js': 'src/hello.coffee',
+		'src/js/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee',
 		'src/js/coffee/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	},
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 		bare: true
 	    },
             files: {
-		'src/js/hello.js': 'src/hello.coffee',
+		'src/js/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee',
 		'src/js/coffee/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	},
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 		join: true
 	    },
             files: {
-		'src/js/hello.js': 'src/hello.coffee',
+		'src/js/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee',
 		'src/js/coffee/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	}
