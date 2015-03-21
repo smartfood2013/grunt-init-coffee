@@ -1,5 +1,5 @@
 /*
- * grunt-init-jquery
+ * grunt-init-coffee
  * https://gruntjs.com/
  *
  * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
