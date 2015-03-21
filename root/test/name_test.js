@@ -1,4 +1,4 @@
- /*
+ ###
    ======== A Handy Little QUnit Reference ========
    http://api.qunitjs.com/
 
@@ -17,7 +17,7 @@
      strictEqual(actual, expected, [message])
      notStrictEqual(actual, expected, [message])
      throws(block, [expected], [message])
- */
+ ###
 test('hello coffee', () ->
         hello = new Hello()
         equal(hello.message(), 'Hello coffee!')
