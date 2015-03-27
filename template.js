@@ -78,6 +78,7 @@ exports.template = function(grunt, init, done) {
         'grunt-contrib-watch': '~0.4.0',
         'grunt-contrib-clean': '~0.4.0',
         'grunt-contrib-coffee': '~0.13.0',
+        'grunt-browserify': 'latest'
       },
     });
 
