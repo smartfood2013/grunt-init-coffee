@@ -11,8 +11,13 @@
   <!-- Load local lib and tests. -->
   <script type="text/javascript" src="../libs/coffee-script.js"></script>
 
+  <!-- 
   <script src="../src/{%= name %}.coffee" type="text/coffeescript"> </script>
   <script src="{%= name %}_test.coffee" type="text/coffeescript"> </script>
+  -->
+
+  <script src="../src/hello.coffee" type="text/coffeescript"> </script>
+  <script src="hello_test.coffee" type="text/coffeescript"> </script>
   <!-- Removing access to jQuery and $. But it'll still be available as _$, if
        you REALLY want to mess around with jQuery in the console. REMEMBER WE
        ARE TESTING A PLUGIN HERE, THIS HELPS ENSURE BEST PRACTICES. REALLY. -->
