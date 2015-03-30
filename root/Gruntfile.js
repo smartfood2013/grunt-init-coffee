@@ -18,8 +18,8 @@ module.exports = function(grunt) {
     coffee: {
 	compile: {
 	    files: {
-		'src/js/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee',
-		'src/js/coffee/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
+		'src/js/hello.js': 'src/hello.coffee',
+		'src/js/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	},
 	compileBare: {
@@ -27,8 +27,8 @@ module.exports = function(grunt) {
 		bare: true
 	    },
             files: {
-		'src/js/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee',
-		'src/js/coffee/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
+		'src/js/hello.js': 'src/hello.coffee',
+		'src/js/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	},
         compileJoined: {
@@ -36,8 +36,8 @@ module.exports = function(grunt) {
 		join: true
 	    },
             files: {
-		'src/js/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee',
-		'src/js/coffee/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
+		'src/js/hello.js': 'src/hello.coffee',
+		'src/js/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	}
     },
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['src/**/*.coffee'],
+        src: ['src/**/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       },
     },
