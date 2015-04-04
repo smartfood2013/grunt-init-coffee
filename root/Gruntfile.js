@@ -19,17 +19,15 @@ module.exports = function(grunt) {
 	compile: {
 	    files: {
 		'src/js/hello.js': 'src/hello.coffee',
-		'src/js/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
+		'src/js/<%= pkg.name %>.js': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	},
 	compileBare: {
 	    options: {
 		bare: true
 	    },
-            files: {
-		'src/js/hello.js': 'src/hello.coffee',
-		'src/js/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
-	    }
+	    src: ['src/**/*.coffee', '!src/hello.coffee'],
+            dest: 'src/js/<%= pkg.name %>.js'
 	},
         compileJoined: {
 	    options: {
@@ -37,28 +35,27 @@ module.exports = function(grunt) {
 	    },
             files: {
 		'src/js/hello.js': 'src/hello.coffee',
-		'src/js/<%= pkg.name %>': ['src/**/*.coffee', '!src/hello.coffee']
+		'src/js/<%= pkg.name %>.js': ['src/**/*.coffee', '!src/hello.coffee']
 	    }
 	}
     },
-
-    concat: {
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true
-      },
-      dist: {
-        src: ['src/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      },
+    browserify: {
+        standalone: {
+            src: '<%= coffee.compileBare.dest %>',
+            dest: 'dist/<%= pkg.name %>.bundle.js',
+            options: {
+                bundleOptions: {
+                standalone: '<%= pkg.name %>'
+            }
+       }
     },
     uglify: {
       options: {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        src: '<%= browserify.standalone.dest %>',
+        dest: 'dist/<%= pkg.name %>.bundle.min.js'
       },
     },
     qunit: {
@@ -66,7 +63,7 @@ module.exports = function(grunt) {
     },
     watch: {
       gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
+        files: 'Gruntfile.js',
         tasks: []
       },
       src: {
@@ -75,7 +72,7 @@ module.exports = function(grunt) {
       },
       test: {
         files: 'test/**/*.coffee',
-        tasks: ['jshint:test', 'qunit']
+        tasks: ['qunit']
       },
     },
   });
@@ -87,7 +84,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-coffee');
-
+  grunt.loadNpmTasks('grunt-browserify');
   // Default task.
   grunt.registerTask('default', ['qunit', 'clean', 'concat', 'uglify']);
 
